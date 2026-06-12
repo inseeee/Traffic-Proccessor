@@ -1,93 +1,160 @@
-# SWP Team 46
+# Week 2 Report – Traffic Processor (TP)
 
+## Project Information
 
+**Project Name:** Traffic Processor (TP)  
+**Short Description:** A network visibility and control tool that captures live packet counters, per-connection statistics, traffic history, and supports blocking, tunneling, and failover behaviours.  
+**Root LICENSE:** [LICENSE](/LICENSE)
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## User Stories
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- [User Stories (reports/week2/user-stories.md)](./user-stories.md)
 
-## Add your files
+---
 
-* [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## Selected Prototype and Interface Artifacts
 
-```
-cd existing_repo
-git remote add origin https://gitlab.pg.innopolis.university/a.usanov/swp-team-46.git
-git branch -M main
-git push -uf origin main
-```
+This project currently defines a **graphical web interface** as the primary user-facing artifact.
 
-## Integrate with your tools
+- **Interactive Prototype (Figma / Balsamiq / etc.):**  
+  [Link to interactive prototype – replace with actual URL]  
+  *Example:* `https://www.figma.com/proto/...`
 
-* [Set up project integrations](https://gitlab.pg.innopolis.university/a.usanov/swp-team-46/-/settings/integrations)
+*Note:* For an API interface, the following would be provided:  
+- OpenAPI specification  
+- Swagger UI  
+- Accessible implementation/mock  
+- Postman collection  
 
-## Collaborate with your team
+For a non-graphical interface:  
+- Interactive mock/demonstration  
+- [docs/interface.md](/docs/interface.md)
 
-* [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+---
 
-## Test and Deploy
+## MVP v0
 
-Use the built-in continuous integration in GitLab.
+- [MVP v0 Report (reports/week2/mvp-v0-report.md)](./mvp-v0-report.md)
+- **Deployed MVP v0 or Runnable Artifact:**  
+  [Link to deployment / runnable artifact – replace with actual URL]  
+  *Example:* `http://localhost:8080` or `https://tp-mvp-v0.herokuapp.com`
+- **Run Instructions:**  
+  ```bash
+  git clone <repo-url>
+  cd traffic-processor
+  npm install
+  npm start
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+  - **Public Video Demonstration:**  
+  [Link to YouTube / Loom – replace with actual URL]
 
-***
+---
 
-# Editing this README
+## Pull Request Template & Reviewed PRs
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+- **Minimal PR/MR Template:**  
+  [Link to `.gitlab/merge_request_templates/default.md` or `.github/pull_request_template.md`]
+- **Reviewed PRs/MRs created during Week 2:**  
+  - [PR #1 – Add basic packet counting](replace-with-actual-url)  
+  - [PR #2 – Web dashboard skeleton](replace-with-actual-url)  
+  *(Add actual links as needed)*
 
-## Suggestions for a good README
+---
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## Lychee Link Checking
 
-## Name
-Choose a self-explaining name for your project.
+- **Lychee Configuration:**  
+  [Link to `.lychee.toml` or similar config file]
+- **Latest successful protected‑default‑branch run:**  
+  [Link to CI/CD pipeline run – replace with actual URL]
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### Excluded Lychee Links
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+The following links are intentionally excluded from Lychee checks with justification:
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+| Excluded Link | Justification |
+|---------------|----------------|
+| `http://localhost:8080` | Local development server, not publicly accessible |
+| `https://internal-corpo-network/*` | Internal network resources (example) |
+| *(Add others as needed)* | |
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+✅ **Manual verification performed:** Each excluded link has been visited in a browser and confirmed accessible before submission.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+---
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Screenshots
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+*(All screenshots stored in `reports/week2/images/` as PNG files)*
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### 1. Protected Default Branch Settings
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+![Protected Branch Settings](./images/protected-branch-settings.png)
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+### 2. Example Reviewed PR/MR (Review by another team member)
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+![Reviewed PR Example](./images/reviewed-pr-example.png)
 
-## License
-For open source projects, say how it is licensed.
+### 3. Selected Prototype and Interface Artifacts
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+![Prototype Screenshot](./images/prototype-screenshot.png)
+
+### 4. Deployed MVP v0 or Runnable Artifact
+
+![MVP v0 Running](./images/mvp-v0-running.png)
+
+---
+
+## Coverage
+
+### Stable IDs Covered by the Prototype
+
+- **US-01** – Basic Packet Counting  
+- **US-02** – Web Dashboard  
+- **US-04** – Collect and Display Per‑Connection Statistics  
+- **US-06** – Traffic Statistics History  
+
+### Selected Prototype Artifacts
+
+The interactive prototype (Figma) covers the **graphical dashboard** and **packet/connection statistics view**, representing US-01, US-02, US-04, and US-06. It demonstrates the layout, data tables, and real-time counter elements without backend integration.
+
+### MVP v0 Foundation
+
+[MVP v0 Report](./mvp-v0-report.md) explains the MVP v0 foundation (e.g., project scaffolding, basic web server, dummy packet counter endpoint). It documents a repeatable smoke‑check scenario.
+
+### Stable User‑Story IDs Represented by MVP v0
+
+MVP v0 establishes the foundational infrastructure for:
+- **US-01** (Basic Packet Counting) – dummy endpoint in place  
+- **US-02** (Web Dashboard) – HTML skeleton served  
+- **US-09** (Monitor TP Health) – health check endpoint included  
+
+*Note:* MVP v0 is a product foundation and does not yet fully implement any complete user story.
+
+---
+
+## Customer Meeting
+
+- **Published Customer Transcript (if publication permitted):**  
+  [Customer Meeting Transcript](./customer-meeting-transcript.md)
+
+- **Customer Meeting Notes (if recording or private sharing refused):**  
+  [Customer Meeting Notes](./customer-meeting-notes.md)
+
+- **Customer Meeting Summary:**  
+  [Customer Meeting Summary](./customer-meeting-summary.md)
+
+*Note:* If the transcript is included only in Moodle with the customer's permission, please state that here.
+
+---
+
+## Week 2 Analysis
+
+[Week 2 Analysis](./analysis.md)
+
+---
+
+## LLM Report
+
+[LLM Report](./llm-report.md)
