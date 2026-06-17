@@ -12,3 +12,4 @@
 | US-10 | Plug‑and‑Run | Should Have | [#12](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/12) | Active | To Do | — |
 | US-11 | Deploy TP as a laptop/microcomputer | Should Have | [#11](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/11) | Active | To Do | — |
 | US-12 | Graphical representation | Should Have | [#10](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/10) | Active | To Do | — |
+| US-13 | Manual system testing | Must Have | [#18](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/18) | Active TO Do | —|
