@@ -14,27 +14,19 @@ Summary of the current user-story and PBI scope since Assignment 2, with links t
 
 Report on which customer feedback points from Assignment 2 were addressed in MVP v1.
 
+[**Link to historical reports/week2/user-stories.md**](../week2/user-stories.md).
 
-Link to historical reports/week2/user-stories.md.
+[**Link to current docs/user-stories.md**](/docs/user-stories.md).
 
+[**Link to the Product Backlog view**](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues)
 
-Link to current docs/user-stories.md.
+[**Link to the current Sprint Backlog board/view**](https://github.com/users/mrZom49/projects/2/views/1)
 
+[**Link to the current Sprint milestone as the authoritative source for the Sprint Goal, Sprint dates, and current Sprint scope**](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/milestone/1)
 
-Link to the Product Backlog board/view.
+**Total Product Backlog size in Story Points: 145**
 
-
-Link to the current Sprint Backlog board/view.
-
-
-Link to the current Sprint milestone as the authoritative source for the Sprint Goal, Sprint dates, and current Sprint scope.
-
-
-Total Product Backlog size in Story Points.
-
-
-Total current Sprint size in Story Points.
-
+**Total current Sprint size in Story Points: 10**
 
 Link to the MVP version field, filtered view, or equivalent grouped view showing the MVP v1 scope.
 
