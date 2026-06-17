@@ -2,8 +2,11 @@
 
 Include:
 
+## Project Information
 
-Project name, short description, and link to the root LICENSE.
+**Project Name:** Traffic Processor (TP)  
+**Short Description:** A network visibility and control tool that captures live packet counters, per-connection statistics, traffic history, and supports blocking, tunneling, and failover behaviours.  
+**Root LICENSE:** [LICENSE](/LICENSE)
 
 
 Summary of the current user-story and PBI scope since Assignment 2, with links to docs/user-stories.md and relevant issues for current state and history.
@@ -98,18 +101,12 @@ SemVer release
 Delivered MVP v1
 Example reviewed issue-linked PR/MR
 
+[**Link to the published customer review transcript**](customer-review-transcript.md)
 
+[**Link to the customer review summary**](customer-review-summary.md)
 
-Link to the published customer review transcript; state that the transcript is shared only through Moodle or an equivalent private instructor-sharing channel if public publication was refused but private sharing was permitted; or link to the customer review notes if recording or private sharing was refused.
+[**Link to the reflection**](reflection.md)
 
+[**Link to the retrospective**](retrospective.md)
 
-Link to the customer review summary.
-
-
-Link to the Week 3 reflection.
-
-
-Link to the retrospective.
-
-
-Link to the LLM report.
+[**Link to the LLM Report**](llm-report.md)
