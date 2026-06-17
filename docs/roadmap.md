@@ -1,7 +1,9 @@
 ### Sprint 1
 - 15/06/2026 - 21/06/2026
 -MVP v1 is up and working
-- #6, #7, #8
+- [Packet Counting](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/6)
+- [Web Dashboard](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/7)
+- [Deploy TP as a Virtual Machine](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/8)
 
 ### Sprint 2
 - 22/06/2026 - 28/06/2026
