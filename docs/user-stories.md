@@ -1,8 +1,8 @@
 | ID | Short title | MoSCoW priority | Issue | Requirement status | Work Status | Sprint |
 |---|---|---|---|---|---|---|
-| US-01 | Basic Packet Counting | Must Have | [#6](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/6) | Active | To Do | — |
-| US-02 | Web Dashboard | Must Have | [#7](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/7) | Active | To Do | — |
-| US-03 | Deploy TP as a Virtual Machine | Must Have | [#8](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/8) | Active | To Do | — |
+| US-01 | Basic Packet Counting | Must Have | [#6](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/6) | Active | To Do | [1]() |
+| US-02 | Web Dashboard | Must Have | [#7](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/7) | Active | To Do | [1]() |
+| US-03 | Deploy TP as a Virtual Machine | Must Have | [#8](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/8) | Active | To Do | [1]() |
 | US-04 | Collect and Display Per‑Connection Statistics | Should Have | [#9](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/9) | Active | To Do | — |
 | US-05 | Block Traffic Based on a Blacklist | Could Have | [#16](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/16) | Active | To Do | — |
 | US-06 | Traffic Statistics History | Could Have | [#17](https://github.com/mrZom49/Traffic-Proccessor-SWP-46/issues/17) | Active | To Do | — |
