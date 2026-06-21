@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traffic Processor</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="panel" aria-live="polite">
+        <span class="diode" id="status-diode" title="Traffic processor status"></span>
+        <p class="label" id="primary-label">Total packets</p>
+        <div class="primary-value" id="primary-value">0</div>
+        <p class="rate" id="rate-value">0 packets/s</p>
+
+        <div class="packet-types" id="packet-types">
+          <div>TCP <strong id="tcp-packets">0</strong></div>
+          <div>UDP <strong id="udp-packets">0</strong></div>
+          <div>ICMP <strong id="icmp-packets">0</strong></div>
+          <div>Other <strong id="other-packets">0</strong></div>
+        </div>
+      </section>
+
+      <button class="mode-button" id="mode-button" type="button">Bytes only</button>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
