@@ -1,0 +1,111 @@
+version: "3.9"
+
+services:
+
+  # --------------------------------------------------------
+  # 1. TRAFFIC PROCESSOR (tproc)
+  #    In the same network with cn.py
+  # --------------------------------------------------------
+  tproc:
+    build:
+      context: ./Traffic_Processor
+      dockerfile: Dockerfile.tproc
+    container_name: tproc
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - shared_data:/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: >
+      python tproc.py
+      --interface eth0
+      --output /data/data.txt
+    networks:
+      - swp-net
+    restart: unless-stopped
+
+  # --------------------------------------------------------
+  # 2. COMMUNICATION NODE (cn)
+  # --------------------------------------------------------
+  cn:
+    build:
+      context: ./Traffic_Processor
+      dockerfile: Dockerfile.cn
+    container_name: cn
+    volumes:
+      - shared_data:/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: >
+      python cn.py
+      --file /data/data.txt
+      --url http://cnss:8080/
+      --delay 2
+      --retries 5
+    depends_on:
+      - cnss
+    networks:
+      - swp-net
+    restart: unless-stopped
+
+  # --------------------------------------------------------
+  # 3. CNSS — Control & Status Server
+  # --------------------------------------------------------
+  cnss:
+    build:
+      context: ./cnss
+      dockerfile: Dockerfile
+    container_name: cnss
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_NAME=postgresdb
+      - DB_USER=postgres_user
+      - DB_PASSWORD=password123
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DEV_MODE=true
+    command: >
+      sh -c "poetry run alembic upgrade head &&
+             poetry run uvicorn app.main:app --host 0.0.0.0 --port 8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - swp-net
+    restart: unless-stopped
+
+  # --------------------------------------------------------
+  # 4. PostgreSQL
+  # --------------------------------------------------------
+  postgres:
+    image: postgres:14.8-alpine3.18
+    container_name: postgres_swp
+    environment:
+      POSTGRES_DB: "postgresdb"
+      POSTGRES_USER: "postgres_user"
+      POSTGRES_PASSWORD: "password123"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres_user -d postgresdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    networks:
+      - swp-net
+    restart: unless-stopped
+
+volumes:
+  shared_data:
+    driver: local
+  postgres_data:
+    driver: local
+
+networks:
+  swp-net:
+    driver: bridge
+    name: swp-net
