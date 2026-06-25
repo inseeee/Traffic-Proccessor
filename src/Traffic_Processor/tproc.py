@@ -2,43 +2,90 @@ import time
 import json
 import argparse
 import threading
+import socket
+import netifaces 
 from datetime import datetime
-from scapy.all import sniff, TCP, UDP, ICMP
+from scapy.all import sniff, TCP, UDP, ICMP, IP, Ether
 
 class TrafficProcessor:
     def __init__(self, interface="any", output_file="data.txt"):
         self.interface = interface
         self.output_file = output_file
-        
-        #Statistics
+       
         self.packet_cnt = 0
         self.bytes_cnt = 0
         self.tcp_cnt = 0
         self.udp_cnt = 0
         self.icmp_cnt = 0
         self.other_cnt = 0
+        
+        # Direction-specific statistics
+        self.incoming_packets = 0
+        self.outgoing_packets = 0
+        self.incoming_bytes = 0
+        self.outgoing_bytes = 0
+        
+        # Rate calculation helpers
         self.last_packet_cnt = 0
         self.last_bytes_cnt = 0
         self.last_update_time = time.time()
         
-        #States
+        self.local_ip = None
+        self.local_mac = None
+        if interface != "any":
+            try:
+                addrs = netifaces.ifaddresses(interface)
+                ipv4 = addrs.get(netifaces.AF_INET, [])
+                if ipv4:
+                    self.local_ip = ipv4[0]['addr']
+                mac = addrs.get(netifaces.AF_LINK, [])
+                if mac:
+                    self.local_mac = mac[0]['addr']
+                print(f"[TP] Local IP: {self.local_ip}, MAC: {self.local_mac}")
+            except Exception as e:
+                print(f"[TP] Could not get interface info: {e}")
+        else:
+            print("[TP] Using 'any' interface – direction classification may be unreliable.")
+        
         self.running = False
         self.writer_thread = None
         
-        print(f"[TP] Initialized on interface: {interface}")
         print(f"[TP] Output file: {output_file}")
     
     def packet_handler(self, packet):
-        self.packet_cnt += 1
-        self.bytes_cnt += len(packet)
-        if packet.haslayer(TCP):
-            self.tcp_cnt += 1
-        elif packet.haslayer(UDP):
-            self.udp_cnt += 1
-        elif packet.haslayer(ICMP):
-            self.icmp_cnt += 1
-        else:
-            self.other_cnt += 1
+        try:
+            self.packet_cnt += 1
+            self.bytes_cnt += len(packet)
+        
+            if packet.haslayer(TCP):
+                self.tcp_cnt += 1
+            elif packet.haslayer(UDP):
+                self.udp_cnt += 1
+            elif packet.haslayer(ICMP):
+                self.icmp_cnt += 1
+            else:
+                self.other_cnt += 1
+            
+            if self.local_ip:
+                if packet.haslayer(IP):
+                    ip = packet[IP]
+                    if ip.dst == self.local_ip:
+                        self.incoming_packets += 1
+                        self.incoming_bytes += len(packet)
+                    elif ip.src == self.local_ip:
+                        self.outgoing_packets += 1
+                        self.outgoing_bytes += len(packet)
+            elif self.local_mac and packet.haslayer(Ether):
+                eth = packet[Ether]
+                if eth.dst == self.local_mac:
+                    self.incoming_packets += 1
+                    self.incoming_bytes += len(packet)
+                elif eth.src == self.local_mac:
+                    self.outgoing_packets += 1
+                    self.outgoing_bytes += len(packet)
+            # If no direction info, counters stay unchanged
+        except Exception as e:
+            print(f"[TP] Error processing packet: {e}")
     
     def get_stats(self):
         current_time = time.time()
@@ -51,8 +98,10 @@ class TrafficProcessor:
         
         return {
             "timestamp": datetime.now().isoformat(),
-            "total_packets": self.packet_cnt,
-            "total_bytes": self.bytes_cnt,
+            "incoming_packets": self.incoming_packets,
+            "outgoing_packets": self.outgoing_packets,
+            "incoming_bytes": self.incoming_bytes,
+            "outgoing_bytes": self.outgoing_bytes,
             "packets_per_second": round(pps, 2),
             "bytes_per_second": round(bps, 2),
             "tcp_packets": self.tcp_cnt,
@@ -75,7 +124,7 @@ class TrafficProcessor:
         print("[TP] Writer thread started")
         while self.running:
             self.write_stats()
-            time.sleep(1)  #Update every second
+            time.sleep(0.5)
     
     def start(self):
         if self.running:
@@ -105,7 +154,7 @@ class TrafficProcessor:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Simple Traffic Processor - MVP V1")
+    parser = argparse.ArgumentParser(description="Traffic Processor - MVP V1")
     parser.add_argument("-i", "--interface", default="any", help="Network interface to capture from (default: any)")
     parser.add_argument("-o", "--output", default="data.txt", help="Output file path (default: data.txt)")
     args = parser.parse_args()
@@ -115,5 +164,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
