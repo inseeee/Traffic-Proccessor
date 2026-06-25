@@ -34,15 +34,18 @@ jobs:
 
     - name: Run Unit Tests with Pytest
       run: |
-        # This runs all test files (test_*.py) it finds in src/.
-        # If NO tests are found, exit code is 5 → we treat it as a warning (not a failure).
-        # If tests are found and FAIL, exit code is 1 → pipeline fails.
+        set +e  # temporarily disable exit on error
         pytest src/ --maxfail=1 --disable-warnings -v
         EXIT_CODE=$?
+        set -e  # re-enable exit on error
         if [ $EXIT_CODE -eq 5 ]; then
-          echo "⚠️ No unit tests found – skipping."
+          echo "No unit tests found"
+          exit 0
+        elif [ $EXIT_CODE -eq 0 ]; then
+          echo "All tests passed"
           exit 0
         else
+          echo "Tests failed with exit code $EXIT_CODE"
           exit $EXIT_CODE
         fi
 
@@ -64,6 +67,6 @@ jobs:
         
         # curl --fail http://localhost:8000/health || exit 1 (for /health)
         
-        echo "All containers are running."
+        echo "All containers are running"
         docker compose down
 
