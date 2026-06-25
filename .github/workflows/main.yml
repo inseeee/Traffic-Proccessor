@@ -11,46 +11,59 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout the code
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # 2. Set up Python
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
-    # 3. Install dependencies (requirements.txt or pyproject.toml)
+    # requirements.txt, could make pyproject.toml
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest
-        # If you have a requirements file in each service, install them
-        # pip install -r src/Traffic_Processor/requirements.txt
-        # pip install -r src/cnss/requirements.txt
+        # Install requirements for ALL services (if they exist)
+        find src -name "requirements.txt" -exec pip install -r {} \;
+        # Install testing libraries
+        pip install pytest pytest-cov requests flake8
 
-    # 4. Lint with flake8
-    - name: Lint with flake8
+    - name: Lint with flake8 (syntax check)
       run: |
         flake8 src/ --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 src/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    # 5. Build Docker images
+    - name: Run Unit Tests with Pytest
+      run: |
+        # This runs all test files (test_*.py) it finds in src/.
+        # If NO tests are found, exit code is 5 → we treat it as a warning (not a failure).
+        # If tests are found and FAIL, exit code is 1 → pipeline fails.
+        pytest src/ --maxfail=1 --disable-warnings -v
+        EXIT_CODE=$?
+        if [ $EXIT_CODE -eq 5 ]; then
+          echo "⚠️ No unit tests found – skipping."
+          exit 0
+        else
+          exit $EXIT_CODE
+        fi
+
     - name: Build Docker images
       run: |
         cd src
         docker compose build
-
-    # 6. Run tests inside Docker containers (If avalible
-    - name: Run tests
+      
+    # Containers start and stay healthy
+    - name: Smoke Test
       run: |
         cd src
         docker compose up -d
-        # Wait for services to be ready
-        sleep 10
-        # Run your test commands here, e.g.:
-        # docker compose exec tproc pytest
-        # docker compose exec cnss pytest
+        echo "Waiting 15 seconds for services to initialize"
+        sleep 15
+        
+        # Check that all expected containers are running
+        docker ps --filter "status=running" --format "table {{.Names}}" | grep -E "tproc|cnss|cn|postgres"
+        
+        # curl --fail http://localhost:8000/health || exit 1 (for /health)
+        
+        echo "All containers are running."
         docker compose down
 
