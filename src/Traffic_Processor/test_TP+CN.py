@@ -88,7 +88,7 @@ def test_post_json_success_and_failure():
         args, kwargs = mock_urlopen.call_args
         request = args[0]  # The Request object
         assert request.get_method() == "POST"
-        assert request.headers.get("Content-Type") == "application/json"
+        assert request.headers.get("Content-type") == "application/json"
         # The data should be a JSON-encoded stats dict
         data = json.loads(kwargs["data"].decode())
         assert "timestamp" in data
