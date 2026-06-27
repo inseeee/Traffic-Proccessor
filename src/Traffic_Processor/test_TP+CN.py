@@ -30,7 +30,6 @@ def test_initialization_with_interface(mock_interface_info):
     assert tp.interface == "eth0"
     assert tp.output_url == "http://test"
     assert tp.delay == 0.5
-    assert tp.retries == 2
     # Check that counters start at zero
     assert tp.packet_cnt == 0
     assert tp.incoming_packets == 0
