@@ -89,8 +89,8 @@ def test_post_json_success_and_failure():
         request = args[0]  # The Request object
         assert request.get_method() == "POST"
         assert request.headers.get("Content-type") == "application/json"
-        # The data should be a JSON-encoded stats dict
-        data = json.loads(kwargs["data"].decode())
+        # The data should be a JSON encoded stats dict
+        data = json.loads(request.data.decode())
         assert "timestamp" in data
         assert data["status"] == "online"
 
