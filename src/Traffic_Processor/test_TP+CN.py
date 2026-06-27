@@ -86,7 +86,7 @@ def test_post_json_success_and_failure():
 
         # Verify request was called with correct data and headers
         args, kwargs = mock_urlopen.call_args
-        assert kwargs["method"] == "POST"
+        assert args[0].get_method() == "POST"
         assert kwargs["headers"]["Content-Type"] == "application/json"
         # The data should be a JSON-encoded stats dict
         data = json.loads(kwargs["data"].decode())
