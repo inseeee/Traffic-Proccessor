@@ -23,7 +23,7 @@ def mock_interface_info():
 
 def test_initialization_with_interface(mock_interface_info):
     """Test that TrafficProcessor obtains local IP and MAC from netifaces."""
-    tp = TrafficProcessor(interface="eth0", output_url="http://test", delay=0.5, retries=2)
+    tp = TrafficProcessor(interface="eth0", output_url="http://test", delay=0.5)
 
     assert tp.local_ip == "192.168.1.100"
     assert tp.local_mac == "aa:bb:cc:dd:ee:ff"
