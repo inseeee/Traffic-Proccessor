@@ -9,7 +9,7 @@
 
 **Why this matters:** Users need real-time traffic data to correctly identify traffic characteristics and patterns. Delays in metric updates create friction in the user interface and may cause operators to make decisions based on stale information. This directly impacts operational efficiency and incident response capabilities.
 
-**Linked quality requirement tests:** [QRT-001](quality-requirement-tests.md#qrt-001-dashboard-metric-update-delay)
+**Linked quality requirement tests:** [QRT-001](quality-requirements-tests.md#qrt-001-dashboard-metric-update-delay)
 
 **Points:** 2
 
@@ -22,7 +22,7 @@
 **Scenario:** When an authorized user starts the Traffic Processor service under a production-like environment, the Traffic Processor service shall become ready to accept and process traffic within ≤500ms of the start command being issued.
 
 **Why this matters:** Rapid startup creates a frictionless experience when users need to deploy the Traffic Processor across different machines. 
-**Linked quality requirement tests:** [QRT-002](quality-requirement-tests.md#qrt-002-traffic-processor-startup-time)
+**Linked quality requirement tests:** [QRT-002](quality-requirements-tests.md#qrt-002-traffic-processor-startup-time)
 
 **Points:** 1
 
@@ -36,7 +36,7 @@
 
 **Why this matters:** The Traffic Processor must not become a network bottleneck that degrades overall system performance. Sufficient throughput capacity ensures that traffic analysis can occur in real-time without dropping packets or introducing unacceptable latency, enabling accurate traffic characterization and statistics collection at scale.
 
-**Linked quality requirement tests:** [QRT-003](quality-requirement-tests.md#qrt-003-traffic-processor-throughput-capacity)
+**Linked quality requirement tests:** [QRT-003](quality-requirements-tests.md#qrt-003-traffic-processor-throughput-capacity)
 
 **Points:** 1
 
