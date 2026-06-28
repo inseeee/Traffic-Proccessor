@@ -26,7 +26,7 @@ jobs:
         # Install requirements for ALL services (if they exist)
         find src -name "requirements.txt" -exec pip install -r {} \;
         # Install testing libraries
-        pip install netifaces scapy pytest fastapi httpx
+        pip install netifaces scapy pytest fastapi httpx python-dotenv
         pip install pytest pytest-cov requests flake8
 
     - name: Lint with flake8 (syntax check)
