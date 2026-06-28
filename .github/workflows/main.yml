@@ -26,13 +26,8 @@ jobs:
         # Install requirements for ALL services (if they exist)
         find src -name "requirements.txt" -exec pip install -r {} \;
         # Install testing libraries
-        pip install netifaces scapy pytest fastapi httpx python-dotenv
+        pip install netifaces scapy pytest
         pip install pytest pytest-cov requests flake8
-
-    - name: Set up Python 3.12 for CNSS
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
 
     - name: Install CNSS dependencies
       run: |
