@@ -8,10 +8,12 @@
 
 ---
 
-To run via docker:
+To run via [docker](https://www.docker.com/):
 
 Run in src folder
+
 ```docker compose up --build```
 
 Then in a new cmd tab
+
 ```docker exec tproc cat /data/data.txt | head -3```
