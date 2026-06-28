@@ -5,7 +5,7 @@ import requests
 from unittest.mock import Mock, patch
 from threading import Thread
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from src/tproc import TrafficProcessor
+from src.tproc import TrafficProcessor
 
 # QRT-001: Dashboard metric update delay
 def test_dashboard_metric_update_delay():
