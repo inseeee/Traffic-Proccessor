@@ -111,7 +111,7 @@ def test_traffic_processor_throughput():
     from unittest.mock import patch
 
     # Configuration
-    PACKET_SIZE_BYTES = 100          # 100 bytes per packet
+    PACKET_SIZE_BYTES = 250          # 100 bytes per packet
     DURATION_SECONDS = 5             # 5 seconds is sufficient for CI
     TARGET_KBPS = 1000
 

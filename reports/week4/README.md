@@ -24,6 +24,11 @@
 - [user acceptance tests](/docs/user-acceptance-tests.md)
 - Summary of the quality model used and selected ISO/IEC 25010 sub-characteristics.
 - Testing status summary, including critical modules and per-module line coverage status.
+   - Unit Tests: src/test_TP+CN.py
+   - Quality Requirement Tests: src/qr_test.py
+   - Coverage Report: Generated in CI as coverage-report artifact
+
+CI Test Logs: Available in GitHub Actions workflow runs
 - [TP unit tests](/src/Traffic_Processor/test_TP+CN.py)
 - Links to integration tests.
 - Links to automated quality requirement tests.
