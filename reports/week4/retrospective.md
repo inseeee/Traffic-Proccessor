@@ -14,4 +14,4 @@
 We used a strict branch creation checklist and quick sync reviews.
 
 ## Action points
-1. Implement the automated unit test suite and reach 30% coverage.
+1. Finalize the automated unit test suite during this sprint to reach 30% coverage.
