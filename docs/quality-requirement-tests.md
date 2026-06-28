@@ -15,14 +15,14 @@
 
 **Automated command or CI check:**
 ```bash
-IN DEVELOPMENT
+pytest src/qr_test.py -k "test_dashboard_metric_update_delay" -v
 ```
 Or equivalent command that executes a performance test measuring the time from Traffic Processor data generation to dashboard UI update completion.
 
 **Expected measurable result:** The dashboard metrics shall update and display new data within ≤1000ms (1 second) from the time the Traffic Processor generates the data, measured across 95% of test runs.
 
 **Evidence location:** 
-TO BE PROVIDED
+https://github.com/SWP-Team-46/Traffic-Proccessor/actions/runs/28325503855/job/83914700451
 
 ---
 
@@ -39,7 +39,7 @@ TO BE PROVIDED
 
 **Automated command or CI check:**
 ```bash
-IN DEVELOPMENT
+pytest src/qr_test.py -k "test_traffic_processor_startup_time" -v
 ```
 Or equivalent command that:
 1. Issues the service start command
@@ -49,7 +49,7 @@ Or equivalent command that:
 **Expected measurable result:** The service shall complete startup and return a ready status within ≤500ms from the start command, as measured by the service health-check endpoint.
 
 **Evidence location:**
-TO BE PROVIDED
+https://github.com/SWP-Team-46/Traffic-Proccessor/actions/runs/28325503855/job/83914700451
 
 ---
 
@@ -67,7 +67,7 @@ TO BE PROVIDED
 
 **Automated command or CI check:**
 ```bash
-IN DEVELOPMENT
+pytest src/qr_test.py -k "test_traffic_processor_throughput" -v
 ```
 Or equivalent command that:
 1. Generates network traffic at a sustained rate
@@ -77,4 +77,4 @@ Or equivalent command that:
 **Expected measurable result:** The Traffic Processor shall sustain a processing rate of at least 1000 Kbps for a duration of at least 60 seconds while correctly identifying traffic statistics and characteristics (e.g., packet counts, protocol distribution, traffic patterns) with less than 1% packet loss or statistics error.
 
 **Evidence location:**
-TO BE PROVIDED
+https://github.com/SWP-Team-46/Traffic-Proccessor/actions/runs/28325503855/job/83914700451
