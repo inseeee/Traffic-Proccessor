@@ -27,7 +27,31 @@ services:
     restart: unless-stopped
 
   # --------------------------------------------------------
-  # 2. CNSS — Control & Status Server
+  # 2. COMMUNICATION NODE (cn)
+  # --------------------------------------------------------
+  cn:
+    build:
+      context: ./Traffic_Processor
+      dockerfile: Dockerfile.cn
+    container_name: cn
+    volumes:
+      - shared_data:/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: >
+      python cn.py
+      --file /data/data.txt
+      --url http://cnss:8080/
+      --delay 2
+      --retries 5
+    depends_on:
+      - cnss
+    networks:
+      - swp-net
+    restart: unless-stopped
+
+  # --------------------------------------------------------
+  # 3. CNSS — Control & Status Server
   # --------------------------------------------------------
   cnss:
     build:
@@ -54,7 +78,7 @@ services:
     restart: unless-stopped
 
   # --------------------------------------------------------
-  # 3. PostgreSQL
+  # 4. PostgreSQL
   # --------------------------------------------------------
   postgres:
     image: postgres:14.8-alpine3.18
