@@ -39,7 +39,11 @@
 - Automated quality requirement tests [description](https://github.com/SWP-Team-46/Traffic-Proccessor/blob/main/docs/quality-requirement-tests.md), [code](https://github.com/SWP-Team-46/Traffic-Proccessor/blob/main/src/qr_test.py).
 - [CI pipeline](/.github/workflows/main.yml)
 - [Protected-default-branch CI run](https://github.com/SWP-Team-46/Traffic-Proccessor/actions/runs/28325503855)
-- [Protection](https://github.com/SWP-Team-46/Traffic-Proccessor/settings/rules/17694937) <!--IDK what to put here-->
+- Main is protected by the following ruleset:
+  - Require a pull request before merging
+  - Block force pushes
+  - Require conversation resolution before merging
+  - Require 1 approval <!--IDK what to put here-->
 - Screenshots or report links for linting, coverage, tests, and the additional QA check.
 - The CI pipeline, test suite, and coverage thresholds established in Assignment 4 will become mandatory gates for every future pull request—blocking merges if linting, unit tests, or coverage requirements fail. As new features are added, the test suite must grow alongside them to prevent regressions and maintain the coverage baseline. Finally, the Definition of Done will formally tie story completion to passing all CI checks and smoke tests, ensuring that "done" always means "production-ready"
 - Link to the SemVer release mapped to the Assignment 4 Sprint increment
