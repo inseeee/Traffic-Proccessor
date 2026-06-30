@@ -1,12 +1,16 @@
 from flask import Flask, request, Response
 import requests
 
-app = Flask(__name__, static_folder=None)
+app = Flask(__name__, static_url_path="/_gate_static")
 
 MAIN_SERVER = "http://cnss:8080"
-ERROR_SERVER = "http://error-server:5000"
 
 BLOCKED_IPS = set()
+
+
+# BLOCKED_IPS = {
+#     "10.241.1.122"
+# }
 
 
 def proxy_request(target_server):
