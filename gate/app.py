@@ -7,8 +7,8 @@ MAIN_SERVER = "http://cnss:8080"
 ERROR_SERVER = "http://error-server:5000"
 
 BLOCKED_IPS = {
-    "172.19.0.1",
-    "10.241.1.122"
+        "172.19.0.0",
+    "10.241.1.120"
 }
 
 
