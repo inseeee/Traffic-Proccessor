@@ -34,8 +34,8 @@ services:
       context: ./cnss
       dockerfile: Dockerfile
     container_name: cnss
-  expose:
-    - "8080"
+    expose:
+      - "8080"
     environment:
       - DB_NAME=postgresdb
       - DB_USER=postgres_user
